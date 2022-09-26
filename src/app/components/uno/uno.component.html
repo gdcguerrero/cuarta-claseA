@@ -1,0 +1,23 @@
+<div>
+    <form [formGroup]="formularioLogin" (submit)="onSubmit()">
+
+        <label>* name </label>
+        <label *ngIf="formularioLogin.get('name')?.errors && formularioLogin.get('name')?.dirty && formularioLogin.get('name')?.touched" >  Error: minimo 5 a 10 letras </label>
+        <input type="text" name="name" id="name" formControlName="name"><br>
+
+        <label>* email </label>
+        <label *ngIf="formularioLogin.get('email')?.errors && formularioLogin.get('email')?.dirty && formularioLogin.get('email')?.touched" >  Error: campo requerido </label>
+        <input type="email" name="email" id="email" formControlName="email"><br>
+
+        <label>* password </label>
+        <label *ngIf="formularioLogin.get('password')?.errors && formularioLogin.get('password')?.dirty && formularioLogin.get('password')?.touched" >  Error: campo requerido </label>
+        <input type="password" name="password" id="password" formControlName="password"><br> 
+
+        <label>* telefono </label>
+        <label *ngIf="formularioLogin.get('telefono')?.errors && formularioLogin.get('telefono')?.dirty && formularioLogin.get('telefono')?.touched" >  Error: Solo numero </label>
+        <input type="text" name="telefono" id="telefono" formControlName="telefono" (input)="validation($event)"><br>
+
+        <button role="submit" type="submit" id="btn" [disabled]="formularioLogin.invalid && formularioLogin.dirty">save</button>
+
+    </form>
+</div>
